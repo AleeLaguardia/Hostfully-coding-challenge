@@ -100,12 +100,13 @@ const ItemModal: React.FC<Props> = ({ hotel, ref, totalPrice, isModalOpen, setIs
     const isExistingBooking = reservation.some((el) => {
       const formatFoundHotelDate = [format(el.date[0], 'MM/dd/yyyy'), format(el.date[1], 'MM/dd/yyyy')];
       const areDatesEqual = formatSelectedHotelDate.every((date, index) => date === formatFoundHotelDate[index]);
+      const areNamesEqual = el.name === name;
 
-      return el.hotel.HotelName === hotel.HotelName && areDatesEqual;
+      return el.hotel.HotelName === hotel.HotelName && (areNamesEqual || areDatesEqual);
     });
 
     if (isExistingBooking) {
-      alert("There is already a reservation with the same date");
+      alert("There is already a reservation with the same name or date");
     } else {
       dispatchReservation();
     }
