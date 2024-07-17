@@ -10,7 +10,7 @@ const api = axios.create({
 // There will be a link generated like this: https://run.mocky.io/v3/ff652d7a-9460-41a2-9202-ace4bae106c2/
 // Take the last part of this endpoint and change it in this variable below:
 
-const endpoint = 'ffbbb2d7-77e0-43db-b149-bb61bc894b71/';
+const endpoint = 'fc7f7cef-6079-4aca-bdcb-6be686893c57';
 
 export const getHotels = async () => {
   try {
