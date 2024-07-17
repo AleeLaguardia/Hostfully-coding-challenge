@@ -43,21 +43,33 @@ const Reservation: React.FC<Props> = () => {
 
   const calendarRef = useClickOutside(() => setIsCalendarOpen(false));
 
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = regex.test(email);
+
+    return isValid;
+  };
+
   const validateExistingBooking = () => {
     const dispatchReservation = () => {
       if (hotelSelected.name.length > 0 && hotelSelected.phone.length > 0 && hotelSelected.email.length > 0) {
-        const hotelIndex = reservation.findIndex((el) => el.hotel === hotelSelected?.hotel);
 
-        dispatch(updateReservation({
-          index: hotelIndex,
-          reservation: { 
-            ...reservation,
-            name: hotelSelected.name,
-            phone: hotelSelected.phone,
-            email: hotelSelected.email,
-            date: hotelSelected.date,
-          }
-        }))
+        if (validateEmail(hotelSelected.email)) {
+          const hotelIndex = reservation.findIndex((el) => el.hotel === hotelSelected?.hotel);
+  
+          dispatch(updateReservation({
+            index: hotelIndex,
+            reservation: { 
+              ...reservation,
+              name: hotelSelected.name,
+              phone: hotelSelected.phone,
+              email: hotelSelected.email,
+              date: hotelSelected.date,
+            }
+          }))
+        } else {
+          alert('Invalid Email');
+        }
       }
     }
   
