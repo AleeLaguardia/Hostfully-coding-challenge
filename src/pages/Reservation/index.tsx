@@ -18,7 +18,7 @@ import CalendarComponent from "../../components/CalendarComponent";
 import useClickOutside from "../../utils/hooks/useClickOutside";
 import { DisplayElement } from "../../components/InputCollection/style";
 import Button from "../../components/Button";
-import { addReservation, deleteReservation, updateReservation } from "../../store/slice/reservationSlice";
+import { deleteReservation, updateReservation } from "../../store/slice/reservationSlice";
 
 interface Props {}
 

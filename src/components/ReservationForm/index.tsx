@@ -8,11 +8,10 @@ import { ButtonContainer, CalendarContainer, Container, Content, DateInput, Date
 import { HOME, PATH } from "../../utils/strings";
 import CalendarComponent from "../CalendarComponent";
 import { RootState } from "../../store";
-import { differenceInDays, format, setDate } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 import useClickOutside from "../../utils/hooks/useClickOutside";
 import { useNavigate } from "react-router-dom";
 import Input from "../Input";
-import { theme } from "../../utils/theme";
 
 const optionsAdults = ['1 adult', '2 adults', '3 adults', '4 adults', '5 adults', 'More than 5'];
 const optionsChildren = ['No children', '1 child', '2 children', '3 children', '4 children', '5 children', 'More than 5'];

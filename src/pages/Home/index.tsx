@@ -3,10 +3,7 @@ import ReservationForm from "../../components/ReservationForm";
 import FillerPic from '../../assets/filler-pic.jpeg';
 import LogoIcon from '../../assets/logo-main.png';
 import PurpleLogo from '../../assets/purple-logo-1.png';
-import { HOME } from "../../utils/strings";
-import { Container, Content, Filler, LandingContainer, LandingLogo, LogoImg, Title } from "./style";
-
-interface Props {}
+import { Container, Content, Filler, LandingContainer, LandingLogo, LogoImg } from "./style";
 
 const LandingPage: React.FC = () => {
   return (
@@ -16,7 +13,7 @@ const LandingPage: React.FC = () => {
   )
 }
 
-const Home: React.FC<Props> = () => {
+const Home: React.FC = () => {
   const [landingPage, setLandingPage] = useState<boolean>(false);
 
   useEffect(() => {

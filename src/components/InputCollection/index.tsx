@@ -4,15 +4,12 @@ import {
   DestinationInputContainer,
   PeopleInputContainer,
   DateInputContainer,
-  ButtonContainer,
-  Button,
   DisplayElement,
   CalendarContainer,
 } from "./style";
 import Input from "../Input";
 import CalendarComponent from "../CalendarComponent";
 import useClickOutside from "../../utils/hooks/useClickOutside";
-import Dropdown from "../Dropdown";
 
 interface Props {
   destination: string;

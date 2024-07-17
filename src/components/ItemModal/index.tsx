@@ -4,10 +4,9 @@ import { Hotel } from "../../utils/types/hotelTypes";
 import MapComponent from "../MapComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { differenceInDays, format } from "date-fns";
+import { format } from "date-fns";
 import Input from "../Input";
 import Dropdown from "../Dropdown";
-import { updateUser } from "../../store/slice/userInfoSlice";
 import { theme } from "../../utils/theme";
 import Button from "../Button";
 import { addReservation } from "../../store/slice/reservationSlice";
@@ -18,7 +17,7 @@ interface Props {
   totalPrice: string;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 const options = ['Credit Card', 'Debit Card', 'Money', 'Gift Card'];
 
@@ -45,37 +44,72 @@ const ItemModal: React.FC<Props> = ({ hotel, ref, totalPrice, isModalOpen, setIs
     validateExistingBooking();
   };
 
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = regex.test(email);
+
+    if (isValid) {
+      setEmailError(false);
+    } else {
+      setEmailError(true);
+    }
+
+    return isValid;
+  };
+
   const validateExistingBooking = () => {
     const dispatchReservation = () => {
       if (name.length > 0 && phone.length > 0 && email.length > 0) {
-        dispatch(addReservation({
-          name,
-          phone,
-          email,
-          paymentMethod: option.length > 0 ? option : options[0],
-          date,
-          hotel,
-        }));
-  
-        setIsModalOpen(false);
+        const isEmailValid = validateEmail(email);
+
+        if (isEmailValid) {
+          dispatch(addReservation({
+            name,
+            phone,
+            email,
+            paymentMethod: option.length > 0 ? option : options[0],
+            date,
+            hotel,
+          }));
+
+          setIsModalOpen(false);
+        }
+      } else {
+        if (name.length === 0) {
+          setNameError(true);
+        } else {
+          setNameError(false);
+        }
+
+        if (phone.length === 0) {
+          setPhoneError(true);
+        } else {
+          setPhoneError(false);
+        }
+
+        if (email.length === 0) {
+          setEmailError(true);
+        } else {
+          setEmailError(false);
+        }
       }
-    }
-  
+    };
+
     const formatSelectedHotelDate = [format(date[0], 'MM/dd/yyyy'), format(date[1], 'MM/dd/yyyy')];
-  
+
     const isExistingBooking = reservation.some((el) => {
       const formatFoundHotelDate = [format(el.date[0], 'MM/dd/yyyy'), format(el.date[1], 'MM/dd/yyyy')];
       const areDatesEqual = formatSelectedHotelDate.every((date, index) => date === formatFoundHotelDate[index]);
-  
+
       return el.hotel.HotelName === hotel.HotelName && areDatesEqual;
     });
-  
+
     if (isExistingBooking) {
       alert("There is already a reservation with the same date");
     } else {
       dispatchReservation();
     }
-  }
+  };
 
   return (
     <Container onClick={(e) => e.stopPropagation()} ref={ref}>
