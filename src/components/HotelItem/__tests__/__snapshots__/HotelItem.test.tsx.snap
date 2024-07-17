@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HotelItem Component renders hotel item with default style 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-aYaIB fOHEvt"
+  >
+    <img
+      alt="source-image"
+      class="sc-gEvDqW gNMiKU"
+      draggable="false"
+      src="https://example.com/image.jpg"
+    />
+    <div
+      class="sc-eqUzNf kmvpQh"
+    >
+      <div
+        class="name-container"
+      >
+        <span
+          class="name"
+        >
+          Test Hotel
+        </span>
+        <span
+          class="description"
+        >
+          This is a test description for the test hotel.
+        </span>
+      </div>
+      <span
+        class="address"
+      >
+        123 Test St, Test City, TS
+      </span>
+    </div>
+    <div
+      class="sc-fqkwJk YOsBz"
+    >
+      <div
+        class="sc-dcJtft hOHCai"
+      >
+        <img
+          alt="StarIcon"
+          src="star.svg"
+        />
+        <span
+          class="rate"
+        >
+          5
+        </span>
+      </div>
+      <div
+        class="sc-dcJtft hOHCai"
+      >
+        <div
+          class="price-container"
+        >
+          <span
+            class="price"
+          >
+            $ 100 night
+          </span>
+          <span
+            class="price"
+          >
+            $300.00 total
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

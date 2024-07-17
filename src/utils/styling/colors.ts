@@ -1,0 +1,16 @@
+export const white = "#FFFFFF";
+export const alabaster = "#F7F7F7";
+export const emperor = "#505050";
+export const galery = "#F0F0F0";
+export const gray = "#808080";
+export const black = "#000000";
+export const purple = '#5F259E';
+export const purpleHover = '#451B74';
+export const darkPurple = "#220146";
+export const radicalRed = '#FA1E71';
+export const lightPurple = '#B78CE5';
+export const silverChalice = '#A6A6A6';
+export const alto = "#D7D7D7";
+export const lynch = '#616D89';
+export const selectiveYellow = '#FFB800';
+export const chelseaGem = '#CA9202';

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReservationForm renders ReservationForm correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-iGgVNO ctVDoY"
+  >
+    <div
+      class="sc-kAycRU gTzSLr"
+    >
+      <img
+        alt="LogoIcon"
+        class="sc-gsFSjX ckeHlI"
+        draggable="false"
+        src="purple-logo-1.png"
+      />
+      <div
+        class="sc-kpDprT lhLlMS"
+      >
+        <span
+          class="title"
+        >
+          Book your stay right now!
+        </span>
+        <input
+          class="sc-cwHqhk cBSfcL"
+          placeholder="Destination..."
+          value=""
+        />
+        <div
+          class="sc-imWZod bqizog"
+        >
+          <div
+            class="sc-jXbVAB bQtoyp"
+            data-testid="first-date-calendar-dataid"
+          >
+            <span>
+              07/13/2024
+            </span>
+          </div>
+          <div
+            class="sc-jXbVAB bQtoyp"
+            data-testid="second-date-calendar-dataid"
+          >
+            <span>
+              07/16/2024
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-imWZod bqizog"
+        >
+          <div
+            class="sc-gEvDqW jGvbiZ"
+            data-testid="adult-dropdown"
+          >
+            <div
+              class="sc-eqUzNf iGyBLM"
+            >
+              <span>
+                How many adults
+              </span>
+              <img
+                alt="ArrowIcon"
+                class="sc-fqkwJk hXoYFT"
+                src="arrow.svg"
+              />
+            </div>
+          </div>
+          <div
+            class="sc-gEvDqW jGvbiZ"
+            data-testid="children-dropdown"
+          >
+            <div
+              class="sc-eqUzNf iGyBLM"
+            >
+              <span>
+                How many children
+              </span>
+              <img
+                alt="ArrowIcon"
+                class="sc-fqkwJk hXoYFT"
+                src="arrow.svg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-dAlxHm enLAMC"
+      >
+        <button
+          class="sc-aYaIB jbXBCB"
+          color="#5F259E"
+          colorhover="#451B74"
+          labelcolor="#FFFFFF"
+          width=""
+        >
+          <span>
+            Confirm
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
