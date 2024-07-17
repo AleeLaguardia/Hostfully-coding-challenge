@@ -8,7 +8,7 @@ import HotelItem from "../../components/HotelItem";
 import LogoIcon from '../../assets/purple-logo-1.png'
 import BookingIcon from '../../assets/icons/booking.svg';
 import InputCollection from "../../components/InputCollection";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { differenceInDays, format } from "date-fns";
 import ItemModal from "../../components/ItemModal";
@@ -17,7 +17,6 @@ import { BOOKING, PATH } from "../../utils/strings";
 
 const Booking: React.FC = () => {
   const location = useLocation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { date } = useSelector((state: RootState) => state.user);
 
@@ -33,7 +32,7 @@ const Booking: React.FC = () => {
   const [_destination, setDestination] = useState<string>(destination || '');
   const [_checkin, setCheckin] = useState<string>(checkin || '');
   const [_checkout, setcheckout] = useState<string>(checkout || '');
-  const [_people, setPeople] = useState<string>(`${adults} and ${children}`);
+  const [_people] = useState<string>(`${adults} and ${children}`);
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectHotel, setSelectHotel] = useState<Hotel>();
@@ -126,7 +125,7 @@ const Booking: React.FC = () => {
             {hotels.filter((el) => el.Address.City === _destination).map((hotel, index) => (
               <HotelItem totalPrice={validateTotalPrice(hotel)} onClick={() => handleHotelSelected(hotel)} hotel={hotel} />
             ))}
-            {destination === _destination || noData && (
+            {(destination === _destination || noData) && (
               <NoDataContainer>
                 <span>{BOOKING.NO_DATA}</span>
               </NoDataContainer>
