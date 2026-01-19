@@ -7,6 +7,17 @@ import { BrowserRouter } from "react-router-dom";
 import { theme } from "../../../utils/theme";
 import store from "../../../store";
 
+jest.mock('../../../api/auth', () => ({
+  loginApi: jest.fn(),
+  registerApi: jest.fn(),
+  getAllReservations: jest.fn().mockResolvedValue({ data: [] }),
+  createReservation: jest.fn(),
+}));
+
+jest.mock('../../../api/hotel', () => ({
+  getHotels: jest.fn().mockResolvedValue({ status: 200, data: { value: [] } }),
+}));
+
 const mockProps = {
   destination: "Paris",
   startDate: "01/01/2022",

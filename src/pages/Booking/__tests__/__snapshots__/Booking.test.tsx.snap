@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Booking Page Snapshot renders with default styling 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb bA-dfYg"
+  >
+    <div
+      class="sc-gtLWhw eDJmII"
+    >
+      <img
+        alt="LogoIcon"
+        class="sc-dntaoT XKpbp"
+        src="purple-logo-1.png"
+      />
+      <div
+        class="sc-egkSDF vDkbn"
+      >
+        <div
+          class="sc-jSSkKI gcGjfR"
+        >
+          <button
+            bordercolor="#5F259E"
+            class="sc-dhCplO jKypsX"
+            color="#FFFFFF"
+            colorhover="#F0F0F0"
+            labelcolor="#5F259E"
+            type="button"
+            width=""
+          >
+            <span>
+              Login
+            </span>
+          </button>
+          <button
+            class="sc-dhCplO giIMnt"
+            color="#5F259E"
+            colorhover="#451B74"
+            labelcolor="#FFFFFF"
+            type="button"
+            width=""
+          >
+            <span>
+              Register
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="sc-fAUdSK frQLNb"
+      >
+        <div
+          class="sc-ovuCP hKJgWY"
+        >
+          <div
+            class="sc-eOzmre YhcqW"
+          >
+            <input
+              class="sc-geXuza eOpgon"
+              placeholder="Destination..."
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="sc-eauhAA hIyRwd"
+            data-testid="date-input-container"
+          >
+            <div
+              class="sc-fFoeYl cDKAhc"
+            >
+              <span>
+                07/13/2024 - 07/16/2024
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-gQaihK jbeMwa"
+          >
+            <div
+              class="sc-fFoeYl cDKAhc"
+            >
+              <span>
+                2 adults and no children
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-ivxoEo gFnSUY"
+    >
+      <div
+        class="sc-dpBQxM etlTrr"
+      >
+        <img
+          alt="source-image"
+          class="sc-jwIPbr kejsEg"
+          draggable="false"
+          src="https://example.com/hotel1.jpg"
+        />
+        <div
+          class="sc-cHqXqK irgJKw"
+        >
+          <div
+            class="name-container"
+          >
+            <span
+              class="name"
+            >
+              Grand Hotel New York
+            </span>
+            <span
+              class="description"
+            >
+              A luxury hotel in NYC
+            </span>
+          </div>
+          <span
+            class="address"
+          >
+            123 Main St, New York, NY
+          </span>
+        </div>
+        <div
+          class="sc-jtQUzJ eobMNR"
+        >
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <img
+              alt="StarIcon"
+              src="star.svg"
+            />
+            <span
+              class="rate"
+            >
+              4.8
+            </span>
+          </div>
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <div
+              class="price-container"
+            >
+              <span
+                class="price"
+              >
+                $ 200 night
+              </span>
+              <span
+                class="price"
+              >
+                $ 600.00 total
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-dpBQxM etlTrr"
+      >
+        <img
+          alt="source-image"
+          class="sc-jwIPbr kejsEg"
+          draggable="false"
+          src="https://example.com/hotel2.jpg"
+        />
+        <div
+          class="sc-cHqXqK irgJKw"
+        >
+          <div
+            class="name-container"
+          >
+            <span
+              class="name"
+            >
+              Beach Resort Miami
+            </span>
+            <span
+              class="description"
+            >
+              Beachfront property
+            </span>
+          </div>
+          <span
+            class="address"
+          >
+            456 Ocean Dr, Miami, FL
+          </span>
+        </div>
+        <div
+          class="sc-jtQUzJ eobMNR"
+        >
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <img
+              alt="StarIcon"
+              src="star.svg"
+            />
+            <span
+              class="rate"
+            >
+              4.5
+            </span>
+          </div>
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <div
+              class="price-container"
+            >
+              <span
+                class="price"
+              >
+                $ 300 night
+              </span>
+              <span
+                class="price"
+              >
+                $ 900.00 total
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-dpBQxM etlTrr"
+      >
+        <img
+          alt="source-image"
+          class="sc-jwIPbr kejsEg"
+          draggable="false"
+          src="https://example.com/hotel3.jpg"
+        />
+        <div
+          class="sc-cHqXqK irgJKw"
+        >
+          <div
+            class="name-container"
+          >
+            <span
+              class="name"
+            >
+              Downtown NYC Hotel
+            </span>
+            <span
+              class="description"
+            >
+              Budget friendly in NYC
+            </span>
+          </div>
+          <span
+            class="address"
+          >
+            789 Broadway, New York, NY
+          </span>
+        </div>
+        <div
+          class="sc-jtQUzJ eobMNR"
+        >
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <img
+              alt="StarIcon"
+              src="star.svg"
+            />
+            <span
+              class="rate"
+            >
+              3.8
+            </span>
+          </div>
+          <div
+            class="sc-cEzcPc ctuElX"
+          >
+            <div
+              class="price-container"
+            >
+              <span
+                class="price"
+              >
+                $ 100 night
+              </span>
+              <span
+                class="price"
+              >
+                $ 300.00 total
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

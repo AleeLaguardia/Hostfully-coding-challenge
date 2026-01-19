@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivateRoute Component Snapshot matches snapshot when authenticated 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="protected-content"
+  >
+    Protected Content
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PrivateRoute Component Snapshot matches snapshot when not authenticated (redirects) 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="login-page"
+  >
+    Login Page
+  </div>
+</DocumentFragment>
+`;

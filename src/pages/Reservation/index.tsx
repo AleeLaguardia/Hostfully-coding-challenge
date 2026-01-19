@@ -11,7 +11,7 @@ import PhoneIcon from '../../assets/icons/phone.svg';
 import { RootState } from "../../store";
 import { Hotel } from "../../utils/types/hotelTypes";
 import MapComponent from "../../components/MapComponent";
-import { ButtonContainer, CalendarContainer, Container, Content, Header, HotelDetailModal, HotelDetails, InputContainer, Item, ItemContainer, Logo, ShadowContainer } from "./style";
+import { ButtonContainer, CalendarContainer, Container, Content, Header, HotelDetailModal, HotelDetails, InputContainer, Item, ItemContainer, Logo, ProfileContainer, ShadowContainer } from "./style";
 import Input from "../../components/Input";
 import { theme } from "../../utils/theme";
 import CalendarComponent from "../../components/CalendarComponent";
@@ -19,10 +19,14 @@ import useClickOutside from "../../utils/hooks/useClickOutside";
 import { DisplayElement } from "../../components/InputCollection/style";
 import Button from "../../components/Button";
 import { deleteReservation, updateReservation } from "../../store/slice/reservationSlice";
+import { deleteReservationApi } from "../../api/auth";
+import AuthHeader from "../../components/AuthHeader";
 
 interface Props {}
 
 type ReservationSelected = {
+  id?: string;
+  userId?: string;
   name: string;
   phone: string;
   email: string;
@@ -33,11 +37,14 @@ type ReservationSelected = {
 
 const Reservation: React.FC<Props> = () => {
   const reservation = useSelector((state: RootState) => state.reservation);
-  const user = useSelector((state: RootState) => state.user);
+  const searchParams = useSelector((state: RootState) => state.user);
+  const { user: authUser } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userReservations = reservation.filter((r: any) => r.userId === authUser?.id);
   
-  const [hotelSelected, setHotelSelected] = useState<ReservationSelected>(reservation[0] || []);
+  const [hotelSelected, setHotelSelected] = useState<ReservationSelected>(userReservations[0] || {});
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -45,49 +52,79 @@ const Reservation: React.FC<Props> = () => {
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = regex.test(email);
-
-    return isValid;
+    return regex.test(email);
   };
 
-  const validateExistingBooking = () => {
-    const dispatchReservation = () => {
-      if (hotelSelected.name.length > 0 && hotelSelected.phone.length > 0 && hotelSelected.email.length > 0) {
+  const formatPhoneNumber = (value: string): string => {
+    const numbers = value.replace(/\D/g, '');
+    const limited = numbers.slice(0, 10);
 
-        if (validateEmail(hotelSelected.email)) {
-          const hotelIndex = reservation.findIndex((el) => el.hotel === hotelSelected?.hotel);
-  
-          dispatch(updateReservation({
-            index: hotelIndex,
-            reservation: { 
-              ...reservation,
-              name: hotelSelected.name,
-              phone: hotelSelected.phone,
-              email: hotelSelected.email,
-              date: hotelSelected.date,
-            }
-          }))
-        } else {
-          alert('Invalid Email');
-        }
-      }
+    if (limited.length <= 3) {
+      return limited.length > 0 ? `(${limited}` : '';
     }
-  
+    if (limited.length <= 6) {
+      return `(${limited.slice(0, 3)}) ${limited.slice(3)}`;
+    }
+    return `(${limited.slice(0, 3)}) ${limited.slice(3, 6)}-${limited.slice(6)}`;
+  };
+
+  const validatePhone = (phone: string): boolean => {
+    const numbers = phone.replace(/\D/g, '');
+    return numbers.length === 10;
+  };
+
+  const handlePhoneChange = (value: string) => {
+    const formatted = formatPhoneNumber(value);
+    setHotelSelected((prevState) => ({ ...prevState, phone: formatted }));
+  };
+
+  const validateExistingBooking = async () => {
+    if (hotelSelected.name.length === 0 || hotelSelected.phone.length === 0 || hotelSelected.email.length === 0) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    if (!validatePhone(hotelSelected.phone)) {
+      alert('Invalid phone number. Please enter a valid US phone number.');
+      return;
+    }
+
+    if (!validateEmail(hotelSelected.email)) {
+      alert('Invalid Email');
+      return;
+    }
+
     const formatSelectedHotelDate = [format(hotelSelected.date[0], 'MM/dd/yyyy'), format(hotelSelected.date[1], 'MM/dd/yyyy')];
-  
-    const isExistingBooking = reservation.some((el) => {
+
+    const isExistingBooking = reservation.some((el: any) => {
+      if (el.id === hotelSelected.id) return false;
+
       const formatFoundHotelDate = [format(el.date[0], 'MM/dd/yyyy'), format(el.date[1], 'MM/dd/yyyy')];
       const areDatesEqual = formatSelectedHotelDate.every((date, index) => date === formatFoundHotelDate[index]);
-      const areNamesEqual = el.name === hotelSelected.name;
 
-      return el.hotel.HotelName === hotelSelected.hotel.HotelName && (areNamesEqual || areDatesEqual);
+      return el.hotel.HotelName === hotelSelected.hotel.HotelName && areDatesEqual;
     });
 
     if (isExistingBooking) {
-      alert("There is already a reservation with the same name or date");
-    } else {
-      dispatchReservation();
+      alert("There is already a reservation for this hotel on the selected dates");
+      return;
     }
+
+    const hotelIndex = reservation.findIndex((el: any) => el.id === hotelSelected?.id);
+
+    dispatch(updateReservation({
+      index: hotelIndex,
+      reservation: {
+        ...reservation[hotelIndex],
+        name: hotelSelected.name,
+        phone: hotelSelected.phone,
+        email: hotelSelected.email,
+        date: hotelSelected.date,
+      }
+    }));
+
+    setIsModalOpen(false);
+    alert('Reservation updated successfully!');
   };
 
   const handleSelectHotel = (hotel: ReservationSelected) => {
@@ -95,37 +132,45 @@ const Reservation: React.FC<Props> = () => {
     setIsModalOpen(true);
   }
 
-  const handleDeleteReservation = () => {
-    if (reservation.length > 0) {
-      const hotelIndex = reservation.findIndex((el) => el.hotel === hotelSelected?.hotel);
+  const handleDeleteReservation = async () => {
+    if (userReservations.length > 0 && hotelSelected?.id) {
+      const response = await deleteReservationApi(hotelSelected.id);
 
-      dispatch(deleteReservation(hotelIndex));
-      setIsModalOpen(false);
+      if ('success' in response) {
+        const hotelIndex = reservation.findIndex((el: any) => el.id === hotelSelected?.id);
+        dispatch(deleteReservation(hotelIndex));
+        setIsModalOpen(false);
+        setHotelSelected(userReservations[0] || {});
+      } else {
+        alert(response.error);
+      }
     }
-    setHotelSelected(reservation[0] || {});
   }
 
-  const handleUpdateReservation = () => {
+  const handleUpdateReservation = async () => {
     if (reservation.length > 0) {
-      validateExistingBooking();
+      await validateExistingBooking();
     }
   }
 
   useEffect(() => {
-    setHotelSelected((prevState) => ({ ...prevState, date: user.date }));
-  }, [user.date])
+    setHotelSelected((prevState) => ({ ...prevState, date: searchParams.date }));
+  }, [searchParams.date])
 
   return (
     <Container>
       <Header>
         <Logo src={LogoIcon} alt="LogoIcon" />
+        <ProfileContainer>
+          <AuthHeader />
+        </ProfileContainer>
         <div onClick={() => navigate(-1)} className="back-button-container">
           <img src={ArrowIcon} alt="ArrowIcon" />
         </div>
       </Header>
       <Content>
         <ItemContainer>
-          {reservation.length > 0 ? reservation.map((item, index) => (
+          {userReservations.length > 0 ? userReservations.map((item: any, index: number) => (
             <Item onClick={() => handleSelectHotel(item)}>
               <img className="hotel-img" src={item.hotel.ImageSource} alt="ImageSource" />
               <div className="hotel-name">
@@ -154,7 +199,7 @@ const Reservation: React.FC<Props> = () => {
             </Item>
           )) : null}
         </ItemContainer>
-        {reservation.length > 0 && (
+        {userReservations.length > 0 && (
           <HotelDetails>
             <div className="img-container">
               <img src={hotelSelected?.hotel.ImageSource || ""} alt="ImageSource" />
@@ -174,9 +219,9 @@ const Reservation: React.FC<Props> = () => {
                 />
                 <Input
                   backgroundColor={theme.colors.alabaster}
-                  placeholder="Phone Number"
+                  placeholder="(555) 555-5555"
                   value={hotelSelected?.phone}
-                  onChange={(e) => setHotelSelected((prevState) => ({ ...prevState, phone: e.target.value }))}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
                   error={false}
                 />
                 <Input
@@ -238,9 +283,9 @@ const Reservation: React.FC<Props> = () => {
                 />
                 <Input
                   backgroundColor={theme.colors.alabaster}
-                  placeholder="Phone Number"
+                  placeholder="(555) 555-5555"
                   value={hotelSelected?.phone}
-                  onChange={(e) => setHotelSelected((prevState) => ({ ...prevState, phone: e.target.value }))}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
                   error={false}
                 />
                 <Input

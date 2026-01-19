@@ -4,7 +4,7 @@ import { theme } from "../../utils/theme";
 
 interface Props {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   color?: string;
   colorHover?: string;
   secondaryColor?: string;
@@ -12,6 +12,7 @@ interface Props {
   labelColor?: string;
   width?: string;
   borderColor?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const Button: React.FC<Props> = ({
@@ -24,9 +25,11 @@ const Button: React.FC<Props> = ({
   labelColor = theme.colors.white,
   width = '',
   borderColor,
+  type = 'button',
 }) => {
   return (
     <Container
+      type={type}
       onClick={onClick}
       color={color}
       colorHover={colorHover}

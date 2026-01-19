@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reservation Page Snapshot matches snapshot with reservations 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb hpuQjD"
+  >
+    <div
+      class="sc-gtLWhw jSeFYr"
+    >
+      <img
+        alt="LogoIcon"
+        class="sc-fAUdSK hZvdCA"
+        src="purple-logo-1.png"
+      />
+      <div
+        class="sc-egkSDF vDkbn"
+      >
+        <div
+          class="sc-dprtRQ jtheky"
+        >
+          <div
+            class="sc-eUlrpB dSPyKV"
+          >
+            <img
+              alt="Profile"
+              src="user.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="back-button-container"
+      >
+        <img
+          alt="ArrowIcon"
+          src="white-arrow.svg"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-dntaoT kEgXMS"
+    >
+      <div
+        class="sc-ivxoEo fnLGkw"
+      >
+        <div
+          class="sc-ghWlax hVxami"
+        >
+          <img
+            alt="ImageSource"
+            class="hotel-img"
+            src="https://example.com/hotel1.jpg"
+          />
+          <div
+            class="hotel-name"
+          >
+            <span>
+              Grand Hotel New York
+            </span>
+            <span
+              class="address"
+            >
+              New York, NY
+            </span>
+            <span
+              class="date"
+            >
+              01/31/2024 - 02/04/2024
+            </span>
+          </div>
+          <div
+            class="user-info"
+          >
+            <div
+              class="display"
+            >
+              <span>
+                John Doe
+              </span>
+              <img
+                alt="UserIcon"
+                src="user.svg"
+              />
+            </div>
+            <div
+              class="display"
+            >
+              <span>
+                (555) 123-4567
+              </span>
+              <img
+                alt="PhoneIcon"
+                src="phone.svg"
+              />
+            </div>
+            <div
+              class="display"
+            >
+              <span>
+                john@example.com
+              </span>
+              <img
+                alt="MailIcon"
+                src="mail.svg"
+              />
+            </div>
+            <div
+              class="display"
+            >
+              <span>
+                Credit Card
+              </span>
+              <img
+                alt="CardIcon"
+                src="card.svg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-kLhKbu cjrNDS"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt="ImageSource"
+            src="https://example.com/hotel1.jpg"
+          />
+        </div>
+        <div
+          class="map-container"
+        >
+          <div
+            data-testid="mock-map"
+          >
+            Map
+          </div>
+        </div>
+        <div
+          class="info-container"
+        >
+          <span
+            class="header"
+          >
+            Update Information
+          </span>
+          <div
+            class="sc-ixGGxD epMLOl"
+          >
+            <input
+              backgroundcolor="#F7F7F7"
+              class="sc-jwIPbr bFCXfa"
+              placeholder="Full Name"
+              type="text"
+              value="John Doe"
+            />
+            <input
+              backgroundcolor="#F7F7F7"
+              class="sc-jwIPbr bFCXfa"
+              placeholder="(555) 555-5555"
+              type="text"
+              value="(555) 123-4567"
+            />
+            <input
+              backgroundcolor="#F7F7F7"
+              class="sc-jwIPbr bFCXfa"
+              placeholder="Email"
+              type="text"
+              value="john@example.com"
+            />
+            <div
+              backgroundcolor="#F7F7F7"
+              class="sc-ovuCP dEgKld"
+            >
+              <span>
+                01/31/2024 - 02/04/2024
+              </span>
+            </div>
+            <div
+              class="sc-dstKZu gIwvtw"
+            >
+              <button
+                bordercolor="#FFB800"
+                class="sc-iuUfFv eoLVZm"
+                color="#FFFFFF"
+                colorhover="#F0F0F0"
+                labelcolor="#FFB800"
+                type="button"
+                width="100%"
+              >
+                <span>
+                  Delete
+                </span>
+              </button>
+              <button
+                class="sc-iuUfFv cddwGu"
+                color="#FFB800"
+                colorhover="#CA9202"
+                labelcolor="#FFFFFF"
+                type="button"
+                width="100%"
+              >
+                <span>
+                  Update
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Reservation Page Snapshot matches snapshot without reservations 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb hpuQjD"
+  >
+    <div
+      class="sc-gtLWhw jSeFYr"
+    >
+      <img
+        alt="LogoIcon"
+        class="sc-fAUdSK hZvdCA"
+        src="purple-logo-1.png"
+      />
+      <div
+        class="sc-egkSDF vDkbn"
+      >
+        <div
+          class="sc-dprtRQ jtheky"
+        >
+          <div
+            class="sc-eUlrpB dSPyKV"
+          >
+            <img
+              alt="Profile"
+              src="user.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="back-button-container"
+      >
+        <img
+          alt="ArrowIcon"
+          src="white-arrow.svg"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-dntaoT kEgXMS"
+    >
+      <div
+        class="sc-ivxoEo fnLGkw"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

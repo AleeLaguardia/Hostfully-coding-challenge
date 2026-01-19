@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthHeader Component When user is authenticated renders authenticated state with correct styling (snapshot) 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb fhTOYg"
+  >
+    <div
+      class="sc-gtLWhw fHFJVy"
+    >
+      <img
+        alt="Profile"
+        src="user.svg"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AuthHeader Component When user is authenticated renders dropdown menu with correct styling (snapshot) 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb fhTOYg"
+  >
+    <div
+      class="sc-gtLWhw fHFJVy"
+    >
+      <img
+        alt="Profile"
+        src="user.svg"
+      />
+    </div>
+    <div
+      class="sc-egkSDF UcRnW"
+    >
+      <div
+        class="sc-fAUdSK IYksO"
+      >
+        John Doe
+      </div>
+      <div
+        class="sc-dntaoT jyYaPI"
+      >
+        <img
+          alt="Reservation"
+          src="booking.svg"
+        />
+        <span>
+          Reservation
+        </span>
+      </div>
+      <div
+        class="sc-dntaoT jyYaPI"
+      >
+        <img
+          alt="Logout"
+          src="user.svg"
+        />
+        <span>
+          Logout
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AuthHeader Component When user is not authenticated renders with correct styling (snapshot) 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-ivxoEo hiDfk"
+  >
+    <button
+      bordercolor="#5F259E"
+      class="sc-ghWlax koufnK"
+      color="#FFFFFF"
+      colorhover="#F0F0F0"
+      labelcolor="#5F259E"
+      type="button"
+      width=""
+    >
+      <span>
+        Login
+      </span>
+    </button>
+    <button
+      class="sc-ghWlax bXoVug"
+      color="#5F259E"
+      colorhover="#451B74"
+      labelcolor="#FFFFFF"
+      type="button"
+      width=""
+    >
+      <span>
+        Register
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

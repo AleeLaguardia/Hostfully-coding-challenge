@@ -38,6 +38,12 @@ export const Header = styled.div`
   }
 `;
 
+export const ProfileContainer = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+`;
+
 export const Logo = styled.img`
   height: 80px;
   width: fit-content;

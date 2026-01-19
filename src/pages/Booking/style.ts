@@ -18,37 +18,12 @@ export const Header = styled.div`
   background-color: ${(props) => props.theme.colors.lightPurple};
   height: 200px;
   width: 100%;
+`;
 
-  .reservation-button-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    margin: 10px 0 0 10px;
-    height: fit-content;
-    padding: 10px;
-    width: fit-content;
-    cursor: pointer;
-    border-radius: 10px;
-
-    &:hover {
-      background-color: ${(props) => props.theme.colors.purple};
-    }
-
-    span {
-      font-family: ${(props) => props.theme.fonts.poppins};
-      font-weight: 500;
-      color: ${(props) => props.theme.colors.white};
-      font-size: ${(props) => props.theme.sizes.m};
-      margin-left: 5px;
-
-      @media (max-width: 700px) {
-        display: none;
-      }
-    }
-  }
+export const ProfileContainer = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
 `;
 
 export const InputContainer = styled.div`
@@ -145,4 +120,48 @@ export const NoDataContainer = styled.div`
     color: ${(props) => props.theme.colors.purple};
     font-size: ${(props) => props.theme.sizes.m};
   }
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 30px 0;
+  margin-top: 20px;
+`;
+
+export const PaginationButton = styled.button<{ active?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: ${(props) => props.active ? props.theme.colors.purple : props.theme.colors.white};
+  color: ${(props) => props.active ? props.theme.colors.white : props.theme.colors.purple};
+  font-family: ${(props) => props.theme.fonts.poppins};
+  font-size: ${(props) => props.theme.sizes.xs};
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover:not(:disabled) {
+    background-color: ${(props) => props.active ? props.theme.colors.purpleHover : props.theme.colors.alabaster};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+export const PaginationInfo = styled.span`
+  font-family: ${(props) => props.theme.fonts.poppins};
+  font-size: ${(props) => props.theme.sizes.xs};
+  color: ${(props) => props.theme.colors.emperor};
+  margin: 0 16px;
 `;

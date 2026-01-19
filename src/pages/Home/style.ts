@@ -16,21 +16,21 @@ export const Container = styled.div`
 
 export const Filler = styled.div`
   display: flex;
-  flex-direction: column; /* Garantir que os elementos estejam em coluna */
+  flex-direction: column;
   grid-area: filler;
   height: 100%;
   width: 100%;
-  position: relative; /* Para posicionar corretamente elementos absolutos */
-  align-items: flex-start; /* Alinhar elementos no início por padrão */
-  
+  position: relative;
+  align-items: flex-start;
+
   .filler-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
-  
+
   & > :last-child {
-    margin-top: auto; /* Empurra o último filho para o final do contêiner */
+    margin-top: auto;
   }
 
   @media (max-width: 1000px) {
@@ -40,8 +40,8 @@ export const Filler = styled.div`
 
 export const LogoImg = styled.img`
   position: absolute;
-  bottom: 0; /* Posiciona o logo no fundo */
-  right: 0; /* Posiciona o logo à direita */
+  bottom: 0;
+  right: 0;
   height: 200px !important;
   width: 200px !important;
   z-index: 3;

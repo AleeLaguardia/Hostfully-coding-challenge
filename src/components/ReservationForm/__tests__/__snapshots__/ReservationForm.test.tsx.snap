@@ -3,19 +3,19 @@
 exports[`ReservationForm renders ReservationForm correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-iGgVNO ctVDoY"
+    class="sc-ivxoEo iWLGna"
   >
     <div
-      class="sc-kAycRU gTzSLr"
+      class="sc-kLhKbu hLdHSt"
     >
       <img
         alt="LogoIcon"
-        class="sc-gsFSjX ckeHlI"
+        class="sc-ghWlax PpljU"
         draggable="false"
         src="purple-logo-1.png"
       />
       <div
-        class="sc-kpDprT lhLlMS"
+        class="sc-keTIit ebgsRv"
       >
         <span
           class="title"
@@ -23,15 +23,16 @@ exports[`ReservationForm renders ReservationForm correctly 1`] = `
           Book your stay right now!
         </span>
         <input
-          class="sc-cwHqhk cBSfcL"
+          class="sc-cHqXqK bDCfsr"
           placeholder="Destination..."
+          type="text"
           value=""
         />
         <div
-          class="sc-imWZod bqizog"
+          class="sc-ixGGxD fIfkgl"
         >
           <div
-            class="sc-jXbVAB bQtoyp"
+            class="sc-khLCKb hbTuwv"
             data-testid="first-date-calendar-dataid"
           >
             <span>
@@ -39,7 +40,7 @@ exports[`ReservationForm renders ReservationForm correctly 1`] = `
             </span>
           </div>
           <div
-            class="sc-jXbVAB bQtoyp"
+            class="sc-khLCKb hbTuwv"
             data-testid="second-date-calendar-dataid"
           >
             <span>
@@ -48,38 +49,38 @@ exports[`ReservationForm renders ReservationForm correctly 1`] = `
           </div>
         </div>
         <div
-          class="sc-imWZod bqizog"
+          class="sc-ixGGxD fIfkgl"
         >
           <div
-            class="sc-gEvDqW jGvbiZ"
+            class="sc-gtLWhw huIhFK"
             data-testid="adult-dropdown"
           >
             <div
-              class="sc-eqUzNf iGyBLM"
+              class="sc-egkSDF dZGpLF"
             >
               <span>
-                How many adults
+                2 adults
               </span>
               <img
                 alt="ArrowIcon"
-                class="sc-fqkwJk hXoYFT"
+                class="sc-fAUdSK coLSHR"
                 src="arrow.svg"
               />
             </div>
           </div>
           <div
-            class="sc-gEvDqW jGvbiZ"
+            class="sc-gtLWhw huIhFK"
             data-testid="children-dropdown"
           >
             <div
-              class="sc-eqUzNf iGyBLM"
+              class="sc-egkSDF dZGpLF"
             >
               <span>
-                How many children
+                No children
               </span>
               <img
                 alt="ArrowIcon"
-                class="sc-fqkwJk hXoYFT"
+                class="sc-fAUdSK coLSHR"
                 src="arrow.svg"
               />
             </div>
@@ -87,13 +88,14 @@ exports[`ReservationForm renders ReservationForm correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-dAlxHm enLAMC"
+        class="sc-dpBQxM cOkFAy"
       >
         <button
-          class="sc-aYaIB jbXBCB"
+          class="sc-blHHSb eFuhzq"
           color="#5F259E"
           colorhover="#451B74"
           labelcolor="#FFFFFF"
+          type="button"
           width=""
         >
           <span>

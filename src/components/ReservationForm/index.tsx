@@ -18,8 +18,8 @@ const optionsChildren = ['No children', '1 child', '2 children', '3 children', '
 
 const ReservationForm: React.FC = () => {
   const [destination, setDestination] = useState<string>('');
-  const [adults, setAdults] = useState<string>('');
-  const [children, setChildren] = useState<string>('');
+  const [adults, setAdults] = useState<string>('2 adults');
+  const [children, setChildren] = useState<string>('No children');
 
   const [isDropdownAdultOpen, setIsDropdownAdultOpen] = useState<boolean>(false);
   const [isDropdownChildrenOpen, setIsDropdownChildrenOpen] = useState<boolean>(false);

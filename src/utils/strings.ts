@@ -2,6 +2,8 @@ export const PATH = {
   HOME: '/',
   BOOKING: '/booking',
   RESERVATION: '/reservation',
+  LOGIN: '/login',
+  REGISTER: '/register',
 };
 
 export const HOME = {

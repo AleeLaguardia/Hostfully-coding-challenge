@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page Snapshot matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb dgokRm"
+  >
+    <form
+      class="sc-gtLWhw hKLlpe"
+    >
+      <img
+        alt="Logo"
+        class="logo"
+        src="purple-logo-1.png"
+      />
+      <h1
+        class="sc-egkSDF jqxTLg"
+      >
+        Welcome Back
+      </h1>
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Email"
+        type="email"
+        value=""
+      />
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <button
+        class="sc-ghWlax cjPBiw"
+        color="#5F259E"
+        colorhover="#451B74"
+        labelcolor="#FFFFFF"
+        type="submit"
+        width="100%"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+      <div
+        class="sc-dntaoT fCrSHr"
+      >
+        <span>
+          Don't have an account?
+        </span>
+        <a
+          href="/register"
+        >
+          Register
+        </a>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login Page Snapshot matches snapshot with error 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb dgokRm"
+  >
+    <form
+      class="sc-gtLWhw hKLlpe"
+    >
+      <img
+        alt="Logo"
+        class="logo"
+        src="purple-logo-1.png"
+      />
+      <h1
+        class="sc-egkSDF jqxTLg"
+      >
+        Welcome Back
+      </h1>
+      <span
+        class="sc-fAUdSK gATvNP"
+      >
+        Invalid credentials
+      </span>
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Email"
+        type="email"
+        value=""
+      />
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <button
+        class="sc-ghWlax cjPBiw"
+        color="#5F259E"
+        colorhover="#451B74"
+        labelcolor="#FFFFFF"
+        type="submit"
+        width="100%"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+      <div
+        class="sc-dntaoT fCrSHr"
+      >
+        <span>
+          Don't have an account?
+        </span>
+        <a
+          href="/register"
+        >
+          Register
+        </a>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login Page Snapshot matches snapshot with loading state 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb dgokRm"
+  >
+    <form
+      class="sc-gtLWhw hKLlpe"
+    >
+      <img
+        alt="Logo"
+        class="logo"
+        src="purple-logo-1.png"
+      />
+      <h1
+        class="sc-egkSDF jqxTLg"
+      >
+        Welcome Back
+      </h1>
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Email"
+        type="email"
+        value=""
+      />
+      <input
+        class="sc-ivxoEo cpCjet"
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <button
+        class="sc-ghWlax cjPBiw"
+        color="#5F259E"
+        colorhover="#451B74"
+        labelcolor="#FFFFFF"
+        type="submit"
+        width="100%"
+      >
+        <span>
+          Loading...
+        </span>
+      </button>
+      <div
+        class="sc-dntaoT fCrSHr"
+      >
+        <span>
+          Don't have an account?
+        </span>
+        <a
+          href="/register"
+        >
+          Register
+        </a>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

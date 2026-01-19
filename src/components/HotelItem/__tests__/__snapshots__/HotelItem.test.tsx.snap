@@ -3,16 +3,16 @@
 exports[`HotelItem Component renders hotel item with default style 1`] = `
 <DocumentFragment>
   <div
-    class="sc-aYaIB fOHEvt"
+    class="sc-blHHSb gnfVfK"
   >
     <img
       alt="source-image"
-      class="sc-gEvDqW gNMiKU"
+      class="sc-gtLWhw hEVQf"
       draggable="false"
       src="https://example.com/image.jpg"
     />
     <div
-      class="sc-eqUzNf kmvpQh"
+      class="sc-egkSDF WNiPI"
     >
       <div
         class="name-container"
@@ -35,10 +35,10 @@ exports[`HotelItem Component renders hotel item with default style 1`] = `
       </span>
     </div>
     <div
-      class="sc-fqkwJk YOsBz"
+      class="sc-fAUdSK hMIMsR"
     >
       <div
-        class="sc-dcJtft hOHCai"
+        class="sc-dntaoT fHpkgn"
       >
         <img
           alt="StarIcon"
@@ -51,7 +51,7 @@ exports[`HotelItem Component renders hotel item with default style 1`] = `
         </span>
       </div>
       <div
-        class="sc-dcJtft hOHCai"
+        class="sc-dntaoT fHpkgn"
       >
         <div
           class="price-container"

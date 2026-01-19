@@ -6,7 +6,6 @@ import ReservationForm from '..';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../utils/theme';
 import { BrowserRouter } from 'react-router-dom';
-import { differenceInDays } from 'date-fns';
 
 const mockStore = configureStore([]);
 
@@ -17,8 +16,8 @@ describe('ReservationForm', () => {
     store = mockStore({
       user: {
         destination: '',
-        adults: '',
-        children: '',
+        adults: '2 adults',
+        children: 'No children',
         date: [new Date('2024-07-14'), new Date('2024-07-17')],
       },
     });
@@ -36,8 +35,8 @@ describe('ReservationForm', () => {
     );
 
     expect(getByPlaceholderText('Destination...')).toBeInTheDocument();
-    expect(getByText('How many adults')).toBeInTheDocument();
-    expect(getByText('How many children')).toBeInTheDocument();
+    expect(getByText('2 adults')).toBeInTheDocument();
+    expect(getByText('No children')).toBeInTheDocument();
     expect(getByText('Confirm')).toBeInTheDocument();
 
     expect(asFragment()).toMatchSnapshot();
@@ -53,7 +52,7 @@ describe('ReservationForm', () => {
         </ThemeProvider>
       </BrowserRouter>
     );
-    
+
     fireEvent.click(getByTestId('first-date-calendar-dataid'));
 
     fireEvent.click(getByText('16'));
@@ -85,12 +84,6 @@ describe('ReservationForm', () => {
     fireEvent.click(getByTestId('second-date-calendar-dataid'));
     fireEvent.click(getByText('17'));
 
-    fireEvent.click(getByTestId('adult-dropdown'));
-    fireEvent.click(getByText('2 adults'));
-
-    fireEvent.click(getByTestId('children-dropdown'));
-    fireEvent.click(getByText('1 child'));
-
     fireEvent.click(getByText('Confirm'));
 
     await waitFor(() => {
@@ -102,7 +95,7 @@ describe('ReservationForm', () => {
             destination: 'Paris',
             date: [new Date('2024-07-14T00:00:00.000Z'), new Date('2024-07-17T00:00:00.000Z')],
             adults: '2 adults',
-            children: '1 child',
+            children: 'No children',
           },
         },
       ]);
@@ -121,9 +114,9 @@ describe('ReservationForm', () => {
     );
 
     fireEvent.click(getByTestId('adult-dropdown'));
-    fireEvent.click(getByText('2 adults'));
+    fireEvent.click(getByText('3 adults'));
 
-    expect(getByTestId('adult-dropdown')).toHaveTextContent('2 adults');
+    expect(getByTestId('adult-dropdown')).toHaveTextContent('3 adults');
 
     fireEvent.click(getByTestId('children-dropdown'));
     fireEvent.click(getByText('1 child'));

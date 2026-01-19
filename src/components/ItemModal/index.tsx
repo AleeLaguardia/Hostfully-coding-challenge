@@ -10,6 +10,7 @@ import Dropdown from "../Dropdown";
 import { theme } from "../../utils/theme";
 import Button from "../Button";
 import { addReservation } from "../../store/slice/reservationSlice";
+import { createReservation } from "../../api/auth";
 
 interface Props {
   hotel: Hotel;
@@ -34,81 +35,96 @@ const ItemModal: React.FC<Props> = ({ hotel, ref, totalPrice, isModalOpen, setIs
   const [emailError, setEmailError] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  const reservation = useSelector((state: RootState) => state.reservation);
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const { date } = useSelector((state: RootState) => state.user);
 
   const { StreetAddress, City, StateProvince } = hotel.Address;
 
-  const handleConfirm = () => {
-    validateExistingBooking();
-  };
-
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = regex.test(email);
-
-    if (isValid) {
-      setEmailError(false);
-    } else {
-      setEmailError(true);
-    }
-
-    return isValid;
+    return regex.test(email);
   };
 
-  const validateExistingBooking = () => {
-    const dispatchReservation = () => {
-      if (name.length > 0 && phone.length > 0 && email.length > 0) {
-        const isEmailValid = validateEmail(email);
+  const validateName = (name: string): boolean => {
+    const regex = /^[a-zA-Z\s]+$/;
+    return regex.test(name) && name.trim().length >= 2;
+  };
 
-        if (isEmailValid) {
-          dispatch(addReservation({
-            name,
-            phone,
-            email,
-            paymentMethod: option.length > 0 ? option : options[0],
-            date,
-            hotel,
-          }));
+  const formatPhoneNumber = (value: string): string => {
+    const numbers = value.replace(/\D/g, '');
+    const limited = numbers.slice(0, 10);
 
-          setIsModalOpen(false);
-        }
-      } else {
-        if (name.length === 0) {
-          setNameError(true);
-        } else {
-          setNameError(false);
-        }
+    if (limited.length <= 3) {
+      return limited.length > 0 ? `(${limited}` : '';
+    }
+    if (limited.length <= 6) {
+      return `(${limited.slice(0, 3)}) ${limited.slice(3)}`;
+    }
+    return `(${limited.slice(0, 3)}) ${limited.slice(3, 6)}-${limited.slice(6)}`;
+  };
 
-        if (phone.length === 0) {
-          setPhoneError(true);
-        } else {
-          setPhoneError(false);
-        }
+  const validatePhone = (phone: string): boolean => {
+    const numbers = phone.replace(/\D/g, '');
+    return numbers.length === 10;
+  };
 
-        if (email.length === 0) {
-          setEmailError(true);
-        } else {
-          setEmailError(false);
-        }
-      }
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+  };
+
+  const handleConfirm = async () => {
+    let hasError = false;
+
+    if (!validateName(name)) {
+      setNameError(true);
+      hasError = true;
+    } else {
+      setNameError(false);
+    }
+
+    if (!validatePhone(phone)) {
+      setPhoneError(true);
+      hasError = true;
+    } else {
+      setPhoneError(false);
+    }
+
+    if (!validateEmail(email)) {
+      setEmailError(true);
+      hasError = true;
+    } else {
+      setEmailError(false);
+    }
+
+    if (hasError || !user) {
+      return;
+    }
+
+    const reservationData = {
+      userId: user.id,
+      name,
+      phone,
+      email,
+      paymentMethod: option.length > 0 ? option : options[0],
+      checkIn: format(date[0], 'yyyy-MM-dd'),
+      checkOut: format(date[1], 'yyyy-MM-dd'),
+      hotel,
     };
 
-    const formatSelectedHotelDate = [format(date[0], 'MM/dd/yyyy'), format(date[1], 'MM/dd/yyyy')];
+    const response = await createReservation(reservationData);
 
-    const isExistingBooking = reservation.some((el) => {
-      const formatFoundHotelDate = [format(el.date[0], 'MM/dd/yyyy'), format(el.date[1], 'MM/dd/yyyy')];
-      const areDatesEqual = formatSelectedHotelDate.every((date, index) => date === formatFoundHotelDate[index]);
-      const areNamesEqual = el.name === name;
+    if ('data' in response) {
+      dispatch(addReservation({
+        ...reservationData,
+        id: response.data.id,
+        date,
+      }));
 
-      return el.hotel.HotelName === hotel.HotelName && (areNamesEqual || areDatesEqual);
-    });
-
-    if (isExistingBooking) {
-      alert("There is already a reservation with the same name or date");
+      setIsModalOpen(false);
     } else {
-      dispatchReservation();
+      alert(response.error);
     }
   };
 
@@ -157,8 +173,8 @@ const ItemModal: React.FC<Props> = ({ hotel, ref, totalPrice, isModalOpen, setIs
             />
             <Input
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone number"
+              onChange={handlePhoneChange}
+              placeholder="(555) 555-5555"
               error={phoneError}
             />
             <Input

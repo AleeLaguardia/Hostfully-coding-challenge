@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapComponent Snapshot matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-blHHSb RDejT"
+  >
+    <div
+      data-center="[40.7128,-74.006]"
+      data-dragging="false"
+      data-testid="map-container"
+      data-zoom="10"
+      style="height: 100%; width: 100%;"
+    >
+      <div
+        data-attribution="© <a href=\\"https://www.openstreetmap.org/copyright\\">OpenStreetMap</a> contributors"
+        data-testid="tile-layer"
+        data-url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <div
+        data-position="[40.7128,-74.006]"
+        data-testid="marker"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
